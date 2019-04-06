@@ -10,6 +10,9 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.IntDef;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -21,9 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import androidx.annotation.IntDef;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -581,14 +581,15 @@ public class PermissionHandlerPlugin implements MethodCallHandler {
 
   @SuppressWarnings("deprecation")
   private boolean isLocationServiceEnabled(Context context) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-      final LocationManager locationManager = context.getSystemService(LocationManager.class);
-      if (locationManager == null) {
-        return false;
-      }
-
-      return locationManager.isLocationEnabled();
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//      final LocationManager locationManager = context.getSystemService(LocationManager.class);
+//      if (locationManager == null) {
+//        return false;
+//      }
+//
+//      return locationManager.isLocationEnabled();
+//    } else
+     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       final int locationMode;
 
       try {
